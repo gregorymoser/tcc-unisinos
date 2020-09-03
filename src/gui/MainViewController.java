@@ -40,7 +40,7 @@ public class MainViewController implements Initializable{
 	
 	@FXML
 	public void onMenuItemSubunidadeAction() {
-		System.out.println("onMenuItemSubunidadeAction");
+		loadView("/gui/SubunidadeList.fxml");
 	}
 	
 	@FXML
