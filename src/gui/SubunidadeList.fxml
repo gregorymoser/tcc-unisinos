@@ -21,13 +21,16 @@
       </Label>
       <ToolBar prefHeight="40.0" prefWidth="200.0">
         <items>
-          <Button fx:id="btNovo" mnemonicParsing="false" onAction="#onBtNovoAction" text="Novo" />
+          <Button fx:id="btNovo" mnemonicParsing="false" onAction="#onBtNovoAction" prefHeight="25.0" prefWidth="71.0" text="Novo">
+               <padding>
+                  <Insets left="5.0" />
+               </padding></Button>
         </items>
       </ToolBar>
       <TableView fx:id="tableViewSubunidade" prefHeight="275.0" prefWidth="430.0">
         <columns>
           <TableColumn fx:id="tableColumnId" prefWidth="75.0" text="ID" />
-          <TableColumn fx:id="tableColumnNome" prefWidth="75.0" text="Nome" />
+          <TableColumn fx:id="tableColumnNome" prefWidth="214.66661834716797" text="Nome" />
         </columns>
       </TableView>
    </children>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane prefHeight="178.0" prefWidth="528.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <GridPane layoutX="14.0" layoutY="14.0" prefHeight="111.0" prefWidth="488.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="158.33331298828125" minWidth="10.0" prefWidth="55.666664123535156" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="344.0000203450521" minWidth="10.0" prefWidth="308.3333333333333" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.3333740234375" minWidth="10.0" prefWidth="120.33333333333331" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="58.0" minHeight="10.0" prefHeight="38.666666666666664" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="58.0" minHeight="0.0" prefHeight="38.666666666666664" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="127.66666412353516" minHeight="10.0" prefHeight="29.333333333333336" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="96.3333511352539" minHeight="10.0" prefHeight="53.666671752929695" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="ID" GridPane.rowIndex="1" />
+            <Label text="Nome" GridPane.rowIndex="2" />
+            <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField prefHeight="25.0" prefWidth="313.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label textFill="#f90909" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <HBox prefHeight="51.0" prefWidth="315.0" spacing="50.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" text="Salvar" />
+                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="143.0" text="Cancelar" />
+               </children>
+               <padding>
+                  <Insets top="5.0" />
+               </padding>
+               <GridPane.margin>
+                  <Insets top="5.0" />
+               </GridPane.margin>
+            </HBox>
+            <Label text="Insira o nome da nova Subunidade" GridPane.columnIndex="1" />
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>

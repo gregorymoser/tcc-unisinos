@@ -1,18 +1,27 @@
 package gui;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
 import application.Main;
+import gui.util.Alerts;
+import gui.util.Utils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.entities.Subunidade;
 import model.services.SubunidadeService;
@@ -36,8 +45,11 @@ public class SubunidadeListController implements Initializable{
 	private ObservableList<Subunidade> obsList;
 	
 	@FXML
-	public void onBtNovoAction() {
-		System.out.println("onBtNovoAction");
+	public void onBtNovoAction(ActionEvent event) {
+		//Captura referencia para o Stage atual
+		Stage parentStage = Utils.currentStage(event);
+		//Define a ação de clicar no botão como chamada do método que habilita janela do formulário
+		createDialogForm("/gui/SubunidadeForm.fxml", parentStage);
 	}
 	
 	// injeção de dependência manual, sem framework ou cotainer
@@ -67,5 +79,29 @@ public class SubunidadeListController implements Initializable{
 		//instanciar observable list utilizando dados originais da lista
 		obsList = FXCollections.observableArrayList(list);
 		tableViewSubunidade.setItems(obsList);
+	}
+	
+	private void createDialogForm(String absoluteName, Stage parentStage) {
+		try {
+			FXMLLoader loader = new FXMLLoader (getClass().getResource(absoluteName));
+			Pane pane = loader.load();
+			
+			//Instancia novo Stage
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Nova Subunidade");
+			dialogStage.setScene(new Scene(pane));
+			//Proibir redimensionar a janela
+			dialogStage.setResizable(false);
+			//Definindo Stage pai desta janela
+			dialogStage.initOwner(parentStage);
+			//Informa se a janela é modal ou se tem outro comportamento
+			//Window Modal mantém a janela travada até ser fechada, para novamente acessar a janela anterior
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			//Mostrar e aguardar
+			dialogStage.showAndWait();
+		}
+		catch(IOException e) {
+			Alerts.showAlert("IO Exception", "Erro ao carregar a view", e.getMessage(), AlertType.ERROR);
+		}
 	}
 }
