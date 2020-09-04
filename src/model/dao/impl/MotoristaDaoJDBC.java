@@ -31,19 +31,20 @@ public class MotoristaDaoJDBC implements MotoristaDao {
 		try {
 			st = conn.prepareStatement(
 					"INSERT INTO motorista "
-					+ "(IdMilitar, Nome, CategoriaCNH, DataAniversario, ValidadeCNH, NumeroCNH, Situacao, SubunidadeId) "
+					+ "(IdMilitar, PG, Nome, CategoriaCNH, DataAniversario, ValidadeCNH, NumeroCNH, Situacao, SubunidadeId) "
 					+ "VALUES "
-					+ "(?, ?, ?, ?, ?, ?, ?, ?)",
+					+ "(?, ?, ?, ?, ?, ?, ?, ?, ?)",
 					Statement.RETURN_GENERATED_KEYS);
 			
 			st.setInt(1, obj.getIdMilitar());
-			st.setString(2, obj.getNome());
-			st.setString(3, obj.getCategoriaCNH());
-			st.setDate(4, new java.sql.Date(obj.getDataAniversario().getTime()));
-			st.setDate(5, new java.sql.Date(obj.getValidadeCNH().getTime()));
-			st.setInt(6, obj.getNumeroCNH());
-			st.setString(7, obj.getSituacao());
-			st.setInt(8, obj.getSubunidade().getId());
+			st.setString(2, obj.getPg());
+			st.setString(3, obj.getNome());
+			st.setString(4, obj.getCategoriaCNH());
+			st.setDate(5, new java.sql.Date(obj.getDataAniversario().getTime()));
+			st.setDate(6, new java.sql.Date(obj.getValidadeCNH().getTime()));
+			st.setInt(7, obj.getNumeroCNH());
+			st.setString(8, obj.getSituacao());
+			st.setInt(9, obj.getSubunidade().getId());
 			
 			int rowsAffected = st.executeUpdate();
 			
@@ -73,18 +74,19 @@ public class MotoristaDaoJDBC implements MotoristaDao {
 		try {
 			st = conn.prepareStatement(
 					"UPDATE motorista "
-					+ "SET IdMilitar = ?, Nome = ?, CategoriaCNH = ?, DataAniversario = ?, ValidadeCNH = ?, NumeroCNH = ?, Situacao = ?, SubunidadeId = ? "
+					+ "SET IdMilitar = ?, PG = ?, Nome = ?, CategoriaCNH = ?, DataAniversario = ?, ValidadeCNH = ?, NumeroCNH = ?, Situacao = ?, SubunidadeId = ? "
 					+ "WHERE Id = ?");
 			
 			st.setInt(1, obj.getIdMilitar());
-			st.setString(2, obj.getNome());
-			st.setString(3, obj.getCategoriaCNH());
-			st.setDate(4, new java.sql.Date(obj.getDataAniversario().getTime()));
-			st.setDate(5, new java.sql.Date(obj.getValidadeCNH().getTime()));
-			st.setInt(6, obj.getNumeroCNH());
-			st.setString(7, obj.getSituacao());
-			st.setInt(8, obj.getSubunidade().getId());
-			st.setInt(9, obj.getId());
+			st.setString(2, obj.getPg());
+			st.setString(3, obj.getNome());
+			st.setString(4, obj.getCategoriaCNH());
+			st.setDate(5, new java.sql.Date(obj.getDataAniversario().getTime()));
+			st.setDate(6, new java.sql.Date(obj.getValidadeCNH().getTime()));
+			st.setInt(7, obj.getNumeroCNH());
+			st.setString(8, obj.getSituacao());
+			st.setInt(9, obj.getSubunidade().getId());
+			st.setInt(10, obj.getId());
 			
 			st.executeUpdate();
 		}
@@ -147,6 +149,7 @@ public class MotoristaDaoJDBC implements MotoristaDao {
 		Motorista obj = new Motorista();
 		obj.setId(rs.getInt("Id"));
 		obj.setIdMilitar(rs.getInt("IdMilitar"));
+		obj.setPg(rs.getString("PG"));
 		obj.setNome(rs.getString("Nome"));
 		obj.setCategoriaCNH(rs.getString("CategoriaCNH"));
 		obj.setDataAniversario(rs.getDate("DataAniversario"));

@@ -9,6 +9,7 @@ public class Motorista implements Serializable {
 
 	private Integer id;
 	private Integer idMilitar;
+	private String pg;
 	private String nome;
 	private String categoriaCNH;
 	private Date dataAniversario;
@@ -21,11 +22,12 @@ public class Motorista implements Serializable {
 	public Motorista() {
 	}
 	
-	public Motorista(Integer id, Integer idMilitar, String nome, String categoriaCNH, Date dataAniversario,
+	public Motorista(Integer id, Integer idMilitar, String pg, String nome, String categoriaCNH, Date dataAniversario,
 			Date validadeCNH, Integer numeroCNH, String situacao, Subunidade subunidade) {
 		super();
 		this.id = id;
 		this.idMilitar = idMilitar;
+		this.pg = pg;
 		this.nome = nome;
 		this.categoriaCNH = categoriaCNH;
 		this.dataAniversario = dataAniversario;
@@ -49,6 +51,14 @@ public class Motorista implements Serializable {
 
 	public void setIdMilitar(Integer idMilitar) {
 		this.idMilitar = idMilitar;
+	}
+	
+	public String getPg() {
+		return pg;
+	}
+
+	public void setPg(String pg) {
+		this.pg = pg;
 	}
 
 	public String getNome() {
@@ -134,8 +144,8 @@ public class Motorista implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Motorista [id=" + id + ", idMilitar=" + idMilitar + ", nome=" + nome + ", categoriaCNH=" + categoriaCNH
-				+ ", dataAniversario=" + dataAniversario + ", ValidadeCNH=" + ValidadeCNH + ", numeroCNH=" + numeroCNH
-				+ ", situacao=" + situacao + ", subunidade=" + subunidade + "]";
+		return "Motorista [id=" + id + ", idMilitar=" + idMilitar + ", pg=" + pg + ", nome=" + nome + ", categoriaCNH="
+				+ categoriaCNH + ", dataAniversario=" + dataAniversario + ", ValidadeCNH=" + ValidadeCNH
+				+ ", numeroCNH=" + numeroCNH + ", situacao=" + situacao + ", subunidade=" + subunidade + "]";
 	}
 }
