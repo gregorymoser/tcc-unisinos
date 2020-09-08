@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import application.Main;
+import gui.listeners.DataChangeListener;
 import gui.util.Alerts;
 import gui.util.Utils;
 import javafx.collections.FXCollections;
@@ -26,7 +27,7 @@ import javafx.stage.Stage;
 import model.entities.Subunidade;
 import model.services.SubunidadeService;
 
-public class SubunidadeListController implements Initializable{
+public class SubunidadeListController implements Initializable, DataChangeListener{
 	
 	private SubunidadeService service;
 	
@@ -92,6 +93,8 @@ public class SubunidadeListController implements Initializable{
 			controller.setSubunidade(obj);
 			////injetando subunidadeService no controlador
 			controller.setSubunidadeService(new SubunidadeService());
+			//Autoinscrição para receber o evento
+			controller.subscribeDataChangeListener(this);
 			//carregar os dados do objeto no formulário
 			controller.updateFormData();
 			
@@ -112,5 +115,11 @@ public class SubunidadeListController implements Initializable{
 		catch(IOException e) {
 			Alerts.showAlert("IO Exception", "Erro ao carregar a view", e.getMessage(), AlertType.ERROR);
 		}
+	}
+
+	@Override
+	public void onDataChanged() {
+		//Atualiza os dados da tabela
+		updateTableView();
 	}
 }
