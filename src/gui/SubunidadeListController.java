@@ -79,7 +79,7 @@ public class SubunidadeListController implements Initializable{
 		List<Subunidade> list = service.findAll();
 		//instanciar observable list utilizando dados originais da lista
 		obsList = FXCollections.observableArrayList(list);
-		tableViewSubunidade.setItems(obsList);
+		tableViewSubunidade.setItems(obsList); 
 	}
 	
 	private void createDialogForm(Subunidade obj, String absoluteName, Stage parentStage) {
@@ -90,6 +90,8 @@ public class SubunidadeListController implements Initializable{
 			SubunidadeFormController controller = loader.getController();
 			//injetando subunidade no controlador
 			controller.setSubunidade(obj);
+			////injetando subunidadeService no controlador
+			controller.setSubunidadeService(new SubunidadeService());
 			//carregar os dados do objeto no formulário
 			controller.updateFormData();
 			

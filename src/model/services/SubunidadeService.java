@@ -13,4 +13,15 @@ public class SubunidadeService {
 	public List<Subunidade> findAll(){
 		return dao.findAll();
 	}
+	
+	public void saveOrUpdate(Subunidade obj) {
+		//caso id seja nulo, significa que estou inserindo uma nova Subunidade, e não atualizando
+		if(obj.getId() == null) {
+			dao.insert(obj);
+		}
+		//caso contrário, estou atualizando
+		else {
+			dao.update(obj);
+		}
+	}
 }
