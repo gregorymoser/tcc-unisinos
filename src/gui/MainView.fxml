@@ -29,7 +29,7 @@
                 </Menu>
               </menus>
             </MenuBar>
-            <ImageView fitHeight="333.0" fitWidth="591.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="333.0" fitWidth="591.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
                <image>
                   <Image url="@../../../../../../../../Desktop/Temp/Projeto%20Final%20II/brasaoeb2.jpg" />
                </image>
