@@ -48,8 +48,9 @@ public class SubunidadeListController implements Initializable{
 	public void onBtNovoAction(ActionEvent event) {
 		//Captura referencia para o Stage atual
 		Stage parentStage = Utils.currentStage(event);
+		Subunidade obj = new Subunidade();
 		//Define a ação de clicar no botão como chamada do método que habilita janela do formulário
-		createDialogForm("/gui/SubunidadeForm.fxml", parentStage);
+		createDialogForm(obj, "/gui/SubunidadeForm.fxml", parentStage);
 	}
 	
 	// injeção de dependência manual, sem framework ou cotainer
@@ -81,10 +82,16 @@ public class SubunidadeListController implements Initializable{
 		tableViewSubunidade.setItems(obsList);
 	}
 	
-	private void createDialogForm(String absoluteName, Stage parentStage) {
+	private void createDialogForm(Subunidade obj, String absoluteName, Stage parentStage) {
 		try {
 			FXMLLoader loader = new FXMLLoader (getClass().getResource(absoluteName));
 			Pane pane = loader.load();
+			
+			SubunidadeFormController controller = loader.getController();
+			//injetando subunidade no controlador
+			controller.setSubunidade(obj);
+			//carregar os dados do objeto no formulário
+			controller.updateFormData();
 			
 			//Instancia novo Stage
 			Stage dialogStage = new Stage();
