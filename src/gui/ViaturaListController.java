@@ -1,6 +1,7 @@
 package gui;
 
 import java.net.URL;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -36,9 +37,30 @@ public class ViaturaListController implements Initializable, DataChangeListener 
 
 	@FXML
 	private TableColumn<Viatura, Integer> tableColumnId;
-
+	
+	@FXML
+	private TableColumn<Viatura, String> tableColumnEB;
+	
 	@FXML
 	private TableColumn<Viatura, String> tableColumnNome;
+	
+	@FXML
+	private TableColumn<Viatura, Integer> tableColumnOdometro;
+	
+	@FXML
+	private TableColumn<Viatura, String> tableColumnCategoria;
+	
+	@FXML
+	private TableColumn<Viatura, Date> tableColumnAno;
+	
+	@FXML
+	private TableColumn<Viatura, Date> tableColumnDataInsercao;
+	
+	@FXML
+	private TableColumn<Viatura, String> tableColumnTipo;
+	
+	@FXML
+	private TableColumn<Viatura, String> tableColumnSituacao;
 
 	@FXML
 	private TableColumn<Viatura, Viatura> tableColumnEDIT;
@@ -74,7 +96,14 @@ public class ViaturaListController implements Initializable, DataChangeListener 
 
 	private void initializeNodes() {
 		tableColumnId.setCellValueFactory(new PropertyValueFactory<>("id"));
+		tableColumnEB.setCellValueFactory(new PropertyValueFactory<>("eb"));
 		tableColumnNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+		tableColumnOdometro.setCellValueFactory(new PropertyValueFactory<>("odometro"));
+		tableColumnCategoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
+		tableColumnAno.setCellValueFactory(new PropertyValueFactory<>("ano"));
+		tableColumnDataInsercao.setCellValueFactory(new PropertyValueFactory<>("dataInsercao"));
+		tableColumnTipo.setCellValueFactory(new PropertyValueFactory<>("tipo"));
+		tableColumnSituacao.setCellValueFactory(new PropertyValueFactory<>("situacao"));
 
 		Stage stage = (Stage) Main.getMainScene().getWindow();
 		tableViewViatura.prefHeightProperty().bind(stage.heightProperty());

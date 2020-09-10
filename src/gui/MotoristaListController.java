@@ -1,6 +1,7 @@
 package gui;
 
 import java.net.URL;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -36,9 +37,30 @@ public class MotoristaListController implements Initializable, DataChangeListene
 
 	@FXML
 	private TableColumn<Motorista, Integer> tableColumnId;
+	
+	@FXML
+	private TableColumn<Motorista, Integer> tableColumnIdMilitar;
 
 	@FXML
+	private TableColumn<Motorista, String> tableColumnPG;
+	
+	@FXML
 	private TableColumn<Motorista, String> tableColumnNome;
+	
+	@FXML
+	private TableColumn<Motorista, String> tableColumnCategoriaCNH;
+	
+	@FXML
+	private TableColumn<Motorista, Date> tableColumnDataAniversario;
+	
+	@FXML
+	private TableColumn<Motorista, Date> tableColumnValidadeCNH;
+	
+	@FXML
+	private TableColumn<Motorista, Integer> tableColumnNumeroCNH;
+	
+	@FXML
+	private TableColumn<Motorista, String> tableColumnSituacao;
 
 	@FXML
 	private TableColumn<Motorista, Motorista> tableColumnEDIT;
@@ -74,7 +96,16 @@ public class MotoristaListController implements Initializable, DataChangeListene
 
 	private void initializeNodes() {
 		tableColumnId.setCellValueFactory(new PropertyValueFactory<>("id"));
+		tableColumnIdMilitar.setCellValueFactory(new PropertyValueFactory<>("idMilitar"));
+		tableColumnPG.setCellValueFactory(new PropertyValueFactory<>("pg"));
 		tableColumnNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+		tableColumnCategoriaCNH.setCellValueFactory(new PropertyValueFactory<>("categoriaCNH"));
+		tableColumnDataAniversario.setCellValueFactory(new PropertyValueFactory<>("dataAniversario"));
+		Utils.formatTableColumnDate(tableColumnDataAniversario, "dd/MM/yyyy");
+		tableColumnValidadeCNH.setCellValueFactory(new PropertyValueFactory<>("validadeCNH"));
+		Utils.formatTableColumnDate(tableColumnValidadeCNH, "dd/MM/yyyy");
+		tableColumnNumeroCNH.setCellValueFactory(new PropertyValueFactory<>("numeroCNH"));
+		tableColumnSituacao.setCellValueFactory(new PropertyValueFactory<>("situacao"));
 
 		Stage stage = (Stage) Main.getMainScene().getWindow();
 		tableViewMotorista.prefHeightProperty().bind(stage.heightProperty());

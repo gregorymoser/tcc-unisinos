@@ -13,7 +13,7 @@ public class Motorista implements Serializable {
 	private String nome;
 	private String categoriaCNH;
 	private Date dataAniversario;
-	private Date ValidadeCNH;
+	private Date validadeCNH;
 	private Integer numeroCNH;
 	private String situacao;
 	
@@ -31,7 +31,7 @@ public class Motorista implements Serializable {
 		this.nome = nome;
 		this.categoriaCNH = categoriaCNH;
 		this.dataAniversario = dataAniversario;
-		ValidadeCNH = validadeCNH;
+		this.validadeCNH = validadeCNH;
 		this.numeroCNH = numeroCNH;
 		this.situacao = situacao;
 		this.subunidade = subunidade;
@@ -86,11 +86,11 @@ public class Motorista implements Serializable {
 	}
 
 	public Date getValidadeCNH() {
-		return ValidadeCNH;
+		return validadeCNH;
 	}
 
 	public void setValidadeCNH(Date validadeCNH) {
-		ValidadeCNH = validadeCNH;
+		this.validadeCNH = validadeCNH;
 	}
 
 	public Integer getNumeroCNH() {
@@ -145,7 +145,7 @@ public class Motorista implements Serializable {
 	@Override
 	public String toString() {
 		return "Motorista [id=" + id + ", idMilitar=" + idMilitar + ", pg=" + pg + ", nome=" + nome + ", categoriaCNH="
-				+ categoriaCNH + ", dataAniversario=" + dataAniversario + ", ValidadeCNH=" + ValidadeCNH
+				+ categoriaCNH + ", dataAniversario=" + dataAniversario + ", ValidadeCNH=" + validadeCNH
 				+ ", numeroCNH=" + numeroCNH + ", situacao=" + situacao + ", subunidade=" + subunidade + "]";
 	}
 }

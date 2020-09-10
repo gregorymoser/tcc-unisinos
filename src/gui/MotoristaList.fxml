@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="346.0" prefWidth="521.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MotoristaListController">
+<VBox prefHeight="346.0" prefWidth="710.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MotoristaListController">
    <children>
       <Label text="Cadastro de Motorista">
          <font>
@@ -29,9 +29,16 @@
       </ToolBar>
       <TableView fx:id="tableViewMotorista" prefHeight="275.0" prefWidth="430.0">
         <columns>
-          <TableColumn fx:id="tableColumnId" prefWidth="75.0" text="ID" />
-          <TableColumn fx:id="tableColumnNome" prefWidth="214.66661834716797" text="Nome" />
-            <TableColumn fx:id="tableColumnEDIT" prefWidth="75.0" />
+          <TableColumn fx:id="tableColumnId" prefWidth="35.33334481716156" text="ID" />
+            <TableColumn fx:id="tableColumnPG" prefWidth="43.999996185302734" text="P/G" />
+          <TableColumn fx:id="tableColumnNome" prefWidth="48.00000762939453" text="Nome" />
+            <TableColumn fx:id="tableColumnIdMilitar" minWidth="0.0" prefWidth="85.99996948242188" text="ID Militar" />
+            <TableColumn fx:id="tableColumnCategoriaCNH" prefWidth="89.99998474121094" text="Categoria CNH" />
+            <TableColumn fx:id="tableColumnValidadeCNH" prefWidth="91.33331298828125" text="Validade CNH" />
+            <TableColumn fx:id="tableColumnNumeroCNH" minWidth="0.0" prefWidth="82.6666259765625" text="Número CNH" />
+            <TableColumn fx:id="tableColumnDataAniversario" prefWidth="74.66671752929688" text="Aniversário" />
+            <TableColumn fx:id="tableColumnSituacao" prefWidth="65.33331298828125" text="Situação" />
+            <TableColumn fx:id="tableColumnEDIT" prefWidth="101.33331298828125" />
             <TableColumn fx:id="tableColumnREMOVE" prefWidth="75.0" />
         </columns>
       </TableView>

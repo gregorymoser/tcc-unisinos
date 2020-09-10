@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="346.0" prefWidth="521.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ViaturaListController">
+<VBox prefHeight="389.0" prefWidth="627.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ViaturaListController">
    <children>
       <Label text="Cadastro de Viatura">
          <font>
@@ -27,11 +27,18 @@
                </padding></Button>
         </items>
       </ToolBar>
-      <TableView fx:id="tableViewViatura" prefHeight="275.0" prefWidth="430.0">
+      <TableView fx:id="tableViewViatura" prefHeight="323.0" prefWidth="627.0">
         <columns>
-          <TableColumn fx:id="tableColumnId" prefWidth="75.0" text="ID" />
-          <TableColumn fx:id="tableColumnNome" prefWidth="214.66661834716797" text="Nome" />
-            <TableColumn fx:id="tableColumnEDIT" prefWidth="75.0" />
+          <TableColumn fx:id="tableColumnId" prefWidth="29.999999403953552" text="ID" />
+            <TableColumn fx:id="tableColumnEB" prefWidth="49.33334159851074" text="EB" />
+          <TableColumn fx:id="tableColumnNome" prefWidth="63.333351135253906" text="Nome" />
+            <TableColumn fx:id="tableColumnOdometro" prefWidth="78.0" text="Odômetro" />
+            <TableColumn fx:id="tableColumnCategoria" prefWidth="75.0" text="Categoria" />
+            <TableColumn fx:id="tableColumnAno" prefWidth="43.3333740234375" text="Ano" />
+            <TableColumn fx:id="tableColumnDataInsercao" prefWidth="88.00006103515625" text="Data Inserçao" />
+            <TableColumn fx:id="tableColumnTipo" prefWidth="41.3333740234375" text="Tipo" />
+            <TableColumn fx:id="tableColumnSituacao" prefWidth="67.99996948242188" text="Situação" />
+            <TableColumn fx:id="tableColumnEDIT" prefWidth="358.66668701171875" />
             <TableColumn fx:id="tableColumnREMOVE" prefWidth="75.0" />
         </columns>
       </TableView>
