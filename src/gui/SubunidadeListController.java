@@ -3,9 +3,11 @@ package gui;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import application.Main;
+import db.DbIntegrityException;
 import gui.listeners.DataChangeListener;
 import gui.util.Alerts;
 import gui.util.Utils;
@@ -19,6 +21,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -44,6 +47,9 @@ public class SubunidadeListController implements Initializable, DataChangeListen
 
 	@FXML
 	private TableColumn<Subunidade, Subunidade> tableColumnEDIT;
+
+	@FXML
+	private TableColumn<Subunidade, Subunidade> tableColumnREMOVE;
 
 	@FXML
 	private Button btNovo;
@@ -88,6 +94,7 @@ public class SubunidadeListController implements Initializable, DataChangeListen
 		obsList = FXCollections.observableArrayList(list);
 		tableViewSubunidade.setItems(obsList);
 		initEditButtons();
+		initRemoveButtons();
 	}
 
 	private void createDialogForm(Subunidade obj, String absoluteName, Stage parentStage) {
@@ -134,21 +141,56 @@ public class SubunidadeListController implements Initializable, DataChangeListen
 		tableColumnEDIT.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
 		tableColumnEDIT.setCellFactory(param -> new TableCell<Subunidade, Subunidade>() {
 			private final Button button = new Button("editar");
-			
+
 			@Override
 			protected void updateItem(Subunidade obj, boolean empty) {
 				super.updateItem(obj, empty);
-				
+
 				if (obj == null) {
 					setGraphic(null);
 					return;
-				} 
-				
+				}
+
 				setGraphic(button);
 				button.setOnAction(
-						event -> createDialogForm(
-								obj, "/gui/SubunidadeForm.fxml",Utils.currentStage(event))); 
+						event -> createDialogForm(obj, "/gui/SubunidadeForm.fxml", Utils.currentStage(event)));
 			}
 		});
+	}
+
+	private void initRemoveButtons() {
+		tableColumnREMOVE.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
+		tableColumnREMOVE.setCellFactory(param -> new TableCell<Subunidade, Subunidade>() {
+			private final Button button = new Button("remover");
+
+			@Override
+			protected void updateItem(Subunidade obj, boolean empty) {
+				super.updateItem(obj, empty);
+
+				if (obj == null) {
+					setGraphic(null);
+					return;
+				}
+
+				setGraphic(button);
+				button.setOnAction(event -> removeEntity(obj));
+			}
+		});
+	}
+
+	private void removeEntity(Subunidade obj) {
+		Optional<ButtonType> result = Alerts.showConfirmation("Confirmação", "Você tem certeza que deseja deletar?");
+		if(result.get() == ButtonType.OK) {
+			if(service == null) {
+				throw new IllegalStateException("Service was null");
+			}
+			try {
+				service.remove(obj);
+				updateTableView();
+			}
+			catch(DbIntegrityException e) {
+				Alerts.showAlert("Erro ao remover o objeto", null, e.getMessage(), AlertType.ERROR);
+			}
+		}
 	}
 }

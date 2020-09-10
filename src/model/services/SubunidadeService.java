@@ -24,4 +24,8 @@ public class SubunidadeService {
 			dao.update(obj);
 		}
 	}
+	
+	public void remove(Subunidade obj) {
+		dao.deleteById(obj.getId());
+	}
 }
