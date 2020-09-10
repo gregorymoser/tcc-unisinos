@@ -16,7 +16,9 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
+import model.services.MotoristaService;
 import model.services.SubunidadeService;
+import model.services.ViaturaService;
 
 public class MainViewController implements Initializable{
 	
@@ -37,7 +39,11 @@ public class MainViewController implements Initializable{
 	
 	@FXML
 	public void onMenuItemMotoristaAction() {
-		System.out.println("onMenuItemMotoristaAction");
+		loadView("/gui/MotoristaList.fxml", (MotoristaListController controller) -> {
+			//ação de chamar funções agora parametrizadas em relação ao commit anterior
+			controller.setMotoristaService(new MotoristaService());
+			controller.updateTableView();
+		});
 	}
 	
 	@FXML
@@ -51,7 +57,11 @@ public class MainViewController implements Initializable{
 	
 	@FXML
 	public void onMenuItemViaturaAction() {
-		System.out.println("onMenuItemViaturaAction");
+		loadView("/gui/ViaturaList.fxml", (ViaturaListController controller) -> {
+			//ação de chamar funções agora parametrizadas em relação ao commit anterior
+			controller.setViaturaService(new ViaturaService());
+			controller.updateTableView();
+		});
 	}
 	
 	@FXML
